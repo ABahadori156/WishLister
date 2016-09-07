@@ -34,7 +34,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="091-gM-OHn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="091-gM-OHn" customClass="ItemCell" customModule="WishLister" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="091-gM-OHn" id="3OL-F0-7Al">
@@ -99,6 +99,12 @@
                                                 <constraint firstItem="lbU-UV-lQa" firstAttribute="top" secondItem="3OL-F0-7Al" secondAttribute="topMargin" id="zrV-HL-2Fh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="details" destination="WC6-74-g0T" id="fBa-Hb-xvi"/>
+                                            <outlet property="price" destination="3sF-zI-cMd" id="7Lr-3D-vXX"/>
+                                            <outlet property="thumb" destination="plJ-xV-hp6" id="VXb-tJ-VO9"/>
+                                            <outlet property="title" destination="6JD-y8-AJM" id="vEz-Qd-ghH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -119,6 +125,10 @@
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segment" destination="X8U-zs-XTg" id="6Nc-te-bRQ"/>
+                        <outlet property="tableView" destination="hPN-WR-rUJ" id="kbe-R4-Unz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

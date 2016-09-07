@@ -91,3 +91,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+/* Core Data Shortcuts */
+
+//Anytime we need to access things in the app delegate like the save context function, then we just do appDelegate.savedContext and to access the viewContext, we do appDelegate.persistentContainer.viewContext
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+let context = appDelegate.persistentContainer.viewContext
+
+
+
+
+
+
+
+
+

@@ -22,6 +22,7 @@
 		3506F73E1D7FB6DE003A3F71 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3506F7361D7FB6DE003A3F71 /* Image+CoreDataClass.swift */; };
 		3506F73F1D7FB6DE003A3F71 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3506F7371D7FB6DE003A3F71 /* Image+CoreDataProperties.swift */; };
 		3506F7441D7FCA98003A3F71 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3506F7431D7FCA98003A3F71 /* MaterialView.swift */; };
+		3506F7461D7FDFCE003A3F71 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3506F7451D7FDFCE003A3F71 /* ItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3506F7361D7FB6DE003A3F71 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3506F7371D7FB6DE003A3F71 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3506F7431D7FCA98003A3F71 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		3506F7451D7FDFCE003A3F71 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				3506F7431D7FCA98003A3F71 /* MaterialView.swift */,
+				3506F7451D7FDFCE003A3F71 /* ItemCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3506F7461D7FDFCE003A3F71 /* ItemCell.swift in Sources */,
 				3506F71E1D7F9AC3003A3F71 /* MainVC.swift in Sources */,
 				3506F73A1D7FB6DE003A3F71 /* Store+CoreDataClass.swift in Sources */,
 				3506F73D1D7FB6DE003A3F71 /* ItemType+CoreDataProperties.swift in Sources */,
