@@ -24,19 +24,54 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         tableView.delegate = self
         tableView.dataSource = self
         
+        // If we leave generateTestData() uncommented, it'll keep adding the 3 test items over and over to our database
+        // generateTestData()
+        attemptFetch()
+        
+        
     }
 
-
+    // When we are calling cellForRowAt, we're creating a cell, passing that into our configureCell method,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        // We'll be calling the configuredCell from two locations 
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemReuse", for: indexPath) as! ItemCell
+        configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+        return cell
     }
     
+    
+    func configureCell(cell: ItemCell, indexPath: NSIndexPath) {
+        
+        let item = controller.object(at: indexPath as IndexPath)
+        // The second configureCell method came from the ItemCell class method
+        cell.configureCell(item: item)
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        // Here we're grabbing the sections out of the controller. We take the info from the sections and put it in your number of rows
+        if let sections = controller.sections {
+            
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+            
+        }
+        
+        return 0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        if let sections = controller.sections {
+            return sections.count
+        }
         return 0
+    }
+    
+    //This method make sure our cells have a height of 150
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
     
     
@@ -52,9 +87,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         fetchRequest.sortDescriptors = [dateSort]
         
         //Here we instantiate our FetchResultsController (We use the shortcuts we created at the bottom of AppDelegate for the moc - We pass in nil for sectionNameKeyPath because we want all the results - cacheName we don't need so we put in nil
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
         //Now we set our controller we created in this function to the fetchedResultsController up at the top of the page
+        self.controller = controller
         
         //A fetch request can fail so do set it up in a do-catch statement
         do {
@@ -100,7 +136,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         case.update:
             if let indexPath = indexPath {
                 let cell = tableView.cellForRow(at: indexPath) as! ItemCell
-                // Update the cell data
+                
+                //When we update a cell, when it comes back it will go through that configureCell method and update the results for us
+                configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
             }
             break
             
@@ -119,7 +157,28 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     
-    
+    func generateTestData() {
+        
+        //We created an item of entity Item inside of the NSManagedObjectContext
+        let item = Item(context: context)
+        item.title = "MacBook Pro"
+        item.price = 1800
+        item.details = "I can't wait until the September event, I hope they release new MPBs"
+        
+        let item2 = Item(context: context)
+        item2.title = "Bose Heaphones"
+        item2.price = 300
+        item2.details = "Noise cancelling technology"
+        
+        let item3 = Item(context: context)
+        item3.title = "Tesla Model S"
+        item3.price = 110000
+        item3.details = "Dream car"
+        
+        //Now our data is residing in the moc, it's residing in memory.
+        // The saveContext saves our test data into the CoreData database
+        appDelegate.saveContext()
+    }
     
     
     
