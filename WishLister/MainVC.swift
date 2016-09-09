@@ -25,7 +25,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         tableView.dataSource = self
         
         // If we leave generateTestData() uncommented, it'll keep adding the 3 test items over and over to our database
-        // generateTestData()
+        // generateItemData()
         attemptFetch()
         
         
@@ -89,6 +89,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         //Here we instantiate our FetchResultsController (We use the shortcuts we created at the bottom of AppDelegate for the moc - We pass in nil for sectionNameKeyPath because we want all the results - cacheName we don't need so we put in nil
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
+        //Without this, we didn't tell the NSFetchedResultsController methods what to listen to and so they weren't listening. 
+        controller.delegate = self
+        
         //Now we set our controller we created in this function to the fetchedResultsController up at the top of the page
         self.controller = controller
         
@@ -151,39 +154,30 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break
-            
-            
         }
     }
     
-    
-    func generateTestData() {
+    // the , after .fetchedObjects refers to the where syntax but in Swift 3 it's now a comma
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //We created an item of entity Item inside of the NSManagedObjectContext
-        let item = Item(context: context)
-        item.title = "MacBook Pro"
-        item.price = 1800
-        item.details = "I can't wait until the September event, I hope they release new MPBs"
-        
-        let item2 = Item(context: context)
-        item2.title = "Bose Heaphones"
-        item2.price = 300
-        item2.details = "Noise cancelling technology"
-        
-        let item3 = Item(context: context)
-        item3.title = "Tesla Model S"
-        item3.price = 110000
-        item3.details = "Dream car"
-        
-        //Now our data is residing in the moc, it's residing in memory.
-        // The saveContext saves our test data into the CoreData database
-        appDelegate.saveContext()
+        //If the objects in the controller's fetchedObject are MORE THAN 0, then ..
+        if let objects = controller.fetchedObjects , objects.count > 0 {
+            
+            //PerformSegue by transferring the item's details that is currently selected
+            let item = objects[indexPath.row]
+            performSegue(withIdentifier: "ItemDetailsVC", sender: item)
+        }
     }
     
-    
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetailsVC" {
+            if let destination = segue.destination as? ItemDetailsVC {
+            if let item = sender as? Item {
+                destination.itemToEdit = item
+            }
+        }
+    }
+}
     
     
     

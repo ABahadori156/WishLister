@@ -34,7 +34,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemReuse" rowHeight="150" id="091-gM-OHn" customClass="ItemCell" customModule="WishLister" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemReuse" rowHeight="150" id="091-gM-OHn" customClass="ItemCell" customModule="WishLister" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="091-gM-OHn" id="3OL-F0-7Al">
@@ -164,7 +164,9 @@
                                     <constraint firstAttribute="width" constant="46" id="Vf8-gB-s6d"/>
                                     <constraint firstAttribute="height" constant="30" id="X4k-G0-clL"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addImage:" destination="rdi-os-FeE" eventType="touchUpInside" id="sLb-Dz-5Mj"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title of Dream" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fn0-lK-0qe" customClass="CustomTextField" customModule="WishLister" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.90849358974358974" green="0.90849358974358974" blue="0.90849358974358974" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -202,6 +204,9 @@
                                 <state key="normal" title="Save Item">
                                     <color key="titleColor" red="0.78822115380000002" green="0.78822115380000002" blue="0.78822115380000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="savePressed:" destination="rdi-os-FeE" eventType="touchUpInside" id="9RM-zs-HEm"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfw-tG-bqn">
                                 <constraints>
@@ -246,8 +251,18 @@
                     <navigationItem key="navigationItem" title="Add/Edit" id="AvN-76-XmN">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="cYk-Pn-xlp">
                             <color key="tintColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deletePressed:" destination="rdi-os-FeE" id="btM-ie-y8U"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailsField" destination="5Rx-XI-AOb" id="Bl4-AC-Me4"/>
+                        <outlet property="priceField" destination="wWl-58-7fj" id="AOh-yB-Ey7"/>
+                        <outlet property="storePicker" destination="Ozu-3y-pgg" id="oGn-Qm-9al"/>
+                        <outlet property="thumbImg" destination="XwG-mk-9c8" id="lmE-1f-9id"/>
+                        <outlet property="titleField" destination="fn0-lK-0qe" id="pRV-FB-sg1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mco-NP-e0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -258,7 +273,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H4Z-qa-JLp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="flj-8c-MND">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="flj-8c-MND">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.78822115380000002" green="0.78822115380000002" blue="0.78822115380000002" alpha="1" colorSpace="calibratedRGB"/>

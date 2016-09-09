@@ -20,7 +20,7 @@ extension UIView {
             return materialKey
         } set {
             
-            // We're going to set whateer the user sets for the new value - When the user goes in and adds a new view that has this as an extension, they can select whether they want the material select added to that view
+            // We're going to set whatever the user sets for the new value - When the user goes in and adds a new view that has this as an extension, they can select whether they want the material select added to that view
             materialKey = newValue
             
             // If they select the material view, we're going to add some shadows

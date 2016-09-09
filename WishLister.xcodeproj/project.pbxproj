@@ -82,8 +82,8 @@
 			children = (
 				3506F7421D7FCA7D003A3F71 /* View */,
 				3506F7401D7FB712003A3F71 /* Model */,
-				3506F71B1D7F9AC3003A3F71 /* AppDelegate.swift */,
 				3506F7471D80E41C003A3F71 /* Controller */,
+				3506F71B1D7F9AC3003A3F71 /* AppDelegate.swift */,
 				3506F71F1D7F9AC3003A3F71 /* Main.storyboard */,
 				3506F7251D7F9AC3003A3F71 /* Assets.xcassets */,
 				3506F7271D7F9AC3003A3F71 /* LaunchScreen.storyboard */,
