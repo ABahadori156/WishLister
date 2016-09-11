@@ -17,7 +17,7 @@ public class Store: NSManagedObject {
 
 // TEST DATA FOR STORES
 func generateStoreData() {
-// This is how we initialize an managedObject from CoreData
+
         let store1 = Store(context: context)
         store1.name = "Best Buy"
 
